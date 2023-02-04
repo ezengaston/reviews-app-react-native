@@ -5,6 +5,8 @@ import * as SplashScreen from "expo-splash-screen";
 
 import Home from "./screens/home";
 
+SplashScreen.preventAutoHideAsync();
+
 export default function App() {
   const [isFontsLoaded] = useFonts({
     "nunito-regular": require("./assets/fonts/Nunito-Regular.ttf"),
