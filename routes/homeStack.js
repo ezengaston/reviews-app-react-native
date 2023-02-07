@@ -10,7 +10,7 @@ export default function HomeStack() {
     <Stack.Navigator
       screenOptions={{
         headerStyle: {
-          backgroundColor: "#eee",
+          backgroundColor: "#fafafa",
         },
       }}
     >
