@@ -1,6 +1,8 @@
 import React from "react";
 import { Text, View } from "react-native";
 
+import Card from "../shared/card";
+
 import { globalStyles } from "../styles/global";
 
 export default function ReviewDetails({ route }) {
@@ -8,9 +10,11 @@ export default function ReviewDetails({ route }) {
 
   return (
     <View style={globalStyles.container}>
-      <Text>{params.title}</Text>
-      <Text>{params.body}</Text>
-      <Text>{params.rating}</Text>
+      <Card>
+        <Text>{params.title}</Text>
+        <Text>{params.body}</Text>
+        <Text>{params.rating}</Text>
+      </Card>
     </View>
   );
 }
