@@ -7,7 +7,13 @@ const Stack = createStackNavigator();
 
 export default function HomeStack() {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: "#eee",
+        },
+      }}
+    >
       <Stack.Screen
         name="Home Stack"
         component={Home}
