@@ -6,8 +6,13 @@ import {
   FlatList,
   TouchableOpacity,
   Modal,
+  TouchableWithoutFeedback,
+  Keyboard,
 } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
+import uuid from "react-native-uuid";
+
+import ReviewForm from "./reviewForm";
 
 import Card from "../shared/card";
 
@@ -36,18 +41,30 @@ export default function Home({ navigation }) {
     },
   ]);
 
+  const addReview = (review) => {
+    review.key = uuid.v4();
+
+    setReviews((currentReviews) => {
+      return [review, ...currentReviews];
+    });
+
+    setIsModalOpen(false);
+  };
+
   return (
     <View style={globalStyles.container}>
       <Modal visible={isModalOpen} animationType="slide">
-        <View style={styles.modalContent}>
-          <MaterialIcons
-            name="close"
-            size={24}
-            style={{ ...styles.modalToggle, ...styles.modalClose }}
-            onPress={() => setIsModalOpen(false)}
-          />
-          <Text>Hello</Text>
-        </View>
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+          <View style={styles.modalContent}>
+            <MaterialIcons
+              name="close"
+              size={24}
+              style={{ ...styles.modalToggle, ...styles.modalClose }}
+              onPress={() => setIsModalOpen(false)}
+            />
+            <ReviewForm addReview={addReview} />
+          </View>
+        </TouchableWithoutFeedback>
       </Modal>
 
       <MaterialIcons
